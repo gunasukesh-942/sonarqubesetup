@@ -1,0 +1,32 @@
+link to download wget https://binaries.sonarsource.com/Distribution/sonarqube/sonarqube-8.9.6.50800.zip
+1. Launch an instance with 8081 and t2.medium
+2.
+3. cd /opt/
+wget https://binaries.sonarsource.com/Distribution/sonarqube/sonarqube8.9.6.50800.zip
+4.
+5. unzip filename
+6. amazon-linux-extras install java-openjdk11 -y
+7. useradd sonar
+8. chown sonar:sonar filename  -R
+9. chmod 777 filename -R
+10. su - sonar
+11. cd /opt
+12. cd sonar—/bin/linux/
+13. ./sonar.sh start
+14. ./sonar status
+LOGIN INTO WEBPAGE WITH PUBLIC IP AND 9000 PORT
+username: admin
+password: admin
+JENKINS INTEGRATION
+reate a project in sonarqube and generate a token
+Go to manager jenkins >> manage plugins >> available >> sonarqube scanner
+Go t credentials >> security >> global credentials >> secret text ——> give the token 
+Go to configure system >> sonarqube servers and select environment variables
+Add sonarqube 
+name: sonar
+serverurl: http://publicip:9000
+Select token
+Save
+Manage jenkins >> global tool settings >> sonarqube scanner >> add sonarqube scanner 
+Name: sonar
+Save 
